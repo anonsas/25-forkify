@@ -1,3 +1,11 @@
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
+
+if (module.hot) {
+  module.hot.accept();
+}
+//=========================================================
+
 const recipeContainer = document.querySelector('.recipe');
 
 const timeout = function (s) {
