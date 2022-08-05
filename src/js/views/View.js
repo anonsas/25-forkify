@@ -20,21 +20,24 @@ export default class View {
     const newMarkup = this._generateMarkup();
 
     const virtualDOM = document.createRange().createContextualFragment(newMarkup);
-    const newElements = Array.from(virtualDOM.querySelectorAll('*'));
-    const curElements = Array.from(this._parentElement.querySelectorAll('*'));
+    const virtualElements = Array.from(virtualDOM.querySelectorAll('*'));
+    const currentElements = Array.from(this._parentElement.querySelectorAll('*'));
 
-    newElements.forEach((newEl, i) => {
-      const curEl = curElements[i];
+    virtualElements.forEach((virtualEl, i) => {
+      const currEl = currentElements[i];
 
       // Updates changed TEXT
-      if (!newEl.isEqualNode(curEl) && newEl.firstChild?.nodeValue.trim() !== '') {
-        curEl.textContent = newEl.textContent;
+      if (
+        !virtualEl.isEqualNode(currEl) &&
+        virtualEl.firstChild?.nodeValue.trim() !== ''
+      ) {
+        currEl.textContent = virtualEl.textContent;
       }
 
       // Updates changed ATTRIBUTES
-      if (!newEl.isEqualNode(curEl)) {
-        Array.from(newEl.attributes).forEach((attr) =>
-          curEl.setAttribute(attr.name, attr.value)
+      if (!virtualEl.isEqualNode(currEl)) {
+        Array.from(virtualEl.attributes).forEach((attr) =>
+          currEl.setAttribute(attr.name, attr.value)
         );
       }
     });
