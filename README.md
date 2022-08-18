@@ -1,7 +1,7 @@
 # Forkify
 
 Recipe application.  
-Live preview: https://forkify-by-igor.netlify.app/
+Live preview: https://forkify-igor.netlify.app
 
 ## Description
 
@@ -14,6 +14,7 @@ This project was built using [Node v16.x] and uses the following technologies:
 
 - NPM - for dependency management.
 - SASS - for keeping things organized.
+- JavaScript - to create dynamic and interactive web content.
 - ParcelJS - for bundling, transpilation, development, etc.
 
 ## Installation
